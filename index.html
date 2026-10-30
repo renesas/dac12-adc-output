@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README-dac</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+--brand: #2b0a8c;
+--accent: #e6007e;
+--ink: #1f2430;
+--muted: #667085;
+--line: #e4e7ec;
+--surface: #f7f7fb;
+}
+* {
+box-sizing: border-box;
+}
+html {
+scroll-behavior: smooth;
+}
+body {
+margin: 0 auto;
+max-width: 1120px;
+padding: 50px;
+color: var(--ink);
+background: #ffffff;
+font-family: "Segoe UI", Arial, sans-serif;
+line-height: 1.65;
+}
+a {
+color: var(--brand);
+}
+a:hover {
+color: var(--accent);
+}
+h1 {
+margin-top: 2.7rem;
+padding-bottom: 0.35rem;
+border-bottom: 2px solid var(--line);
+}
+h2 {
+margin-top: 2.4rem;
+padding-bottom: 0.3rem;
+border-bottom: 1px solid var(--line);
+}
+h3,
+h4,
+h5,
+h6 {
+margin-top: 2rem;
+}
+img {
+display: block;
+max-width: 100%;
+height: auto;
+margin: 1rem auto 0.35rem;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 1.25rem 0;
+}
+th,
+td {
+border: 1px solid var(--line);
+padding: 0.7rem;
+vertical-align: top;
+}
+th {
+background: var(--surface);
+text-align: left;
+}
+blockquote {
+margin: 1.2rem 0;
+padding: 0.7rem 1rem;
+border-left: 4px solid var(--brand);
+background: var(--surface);
+}
+code {
+font-family: Consolas, "Courier New", monospace;
+}
+pre {
+overflow-x: auto;
+padding: 1rem;
+border-radius: 8px;
+background: var(--surface);
+}
+
+body > h1:first-of-type {
+margin: -50px calc(50% - 50vw) 3rem;
+padding: 3.5rem max(50px, calc((100vw - 1120px) / 2));
+border: 0;
+background: linear-gradient(135deg, #250777, #3e16a3);
+color: #ffffff;
+font-size: clamp(2rem, 5vw, 3.5rem);
+line-height: 1.1;
+}
+@media (max-width: 640px) {
+body {
+padding: 20px;
+}
+body > h1:first-of-type {
+margin-top: -20px;
+padding: 2.5rem 20px;
+}
+}
+</style>
+</head>
+<body>
+<h1 id="dac12-with-adc-loopback">DAC12 (with ADC Loopback)</h1>
+<h2 id="overview">Overview</h2>
+<p>This Software Building Block (SBB) demonstrates use of the Renesas
+DAC together with an ADC to generate an analog output and read that
+output back on an ADC input. This document covers only:</p>
+<ul>
+<li>FPB-RA4E2</li>
+<li>FPB-RA6E2</li>
+<li>FPB-RA8E1</li>
+</ul>
+<p>The reference application accepts a DAC value from <strong>1 to
+4095</strong>, writes the value to the DAC, starts conversion, waits for
+the DAC output to stabilize, starts an ADC scan, and prints the
+resulting ADC value to the serial terminal.</p>
+<p>A jumper wire connects the DAC output to ADC channel 0 on each of the
+supported reference boards.</p>
+<h2 id="use-case-demonstrated-by-this-sbb">Use case demonstrated by this
+SBB</h2>
+<p>The SBB demonstrates a DAC-to-ADC analog loopback use case:</p>
+<ol type="1">
+<li>Open the DAC and ADC peripherals.</li>
+<li>Configure the ADC scan.</li>
+<li>Calibrate the ADC where required by the selected ADC
+implementation.</li>
+<li>Accept a DAC value from the reference application’s terminal
+interface.</li>
+<li>Write and start the DAC conversion.</li>
+<li>Allow the DAC output voltage to stabilize.</li>
+<li>Start the ADC scan.</li>
+<li>Read the ADC result after scan completion.</li>
+<li>Print the ADC value to the terminal.</li>
+</ol>
+<p>This provides a functional reference for generating an analog value
+with the DAC and observing it through an ADC input.</p>
+<h2 id="hardware-setup">Hardware setup</h2>
+<p>The supplied documentation requires:</p>
+<ul>
+<li>1 x supported Renesas RA board</li>
+<li>1 x appropriate USB cable for programming and debugging</li>
+<li>1 x jumper wire</li>
+</ul>
+<p>Connect the board’s USB debug port to the host PC and make the
+DAC-to-ADC loopback connection for the selected board.</p>
+<h3 id="fpb-ra4e2">FPB-RA4E2</h3>
+<p>Connect:</p>
+<ul>
+<li><strong>P014 (J4:21), DAC Output</strong> to <strong>P000 (J4:32),
+ADC Channel 0</strong></li>
+</ul>
+<h3 id="fpb-ra6e2">FPB-RA6E2</h3>
+<p>Connect:</p>
+<ul>
+<li><strong>P014 (J4:21), DAC Output</strong> to <strong>P000 (J4:32),
+ADC Channel 0</strong></li>
+</ul>
+<h3 id="fpb-ra8e1">FPB-RA8E1</h3>
+<p>Before using the on-board debug functionality:</p>
+<ul>
+<li>Open jumper <strong>J6</strong>.</li>
+<li>Open jumper <strong>J9</strong>.</li>
+</ul>
+<p>Connect:</p>
+<ul>
+<li><strong>P014 (J1:34), DAC Output</strong> to <strong>P004 (J1:20),
+ADC Channel 0</strong></li>
+</ul>
+<h2 id="sbb-core-code">SBB core code</h2>
+<p>The reusable SBB layer is implemented by:</p>
+<ul>
+<li><code>dac_ep.c</code></li>
+<li><code>dac_ep.h</code></li>
+</ul>
+<p>The core provides the peripheral-facing operations needed by the
+example, including:</p>
+<ul>
+<li>DAC open and close.</li>
+<li>ADC open and close.</li>
+<li>ADC scan configuration.</li>
+<li>Optional ADC calibration when enabled by the selected ADC
+implementation.</li>
+<li>DAC write, start, stabilization delay, ADC scan start, and DAC stop
+sequencing.</li>
+<li>Reading an ADC conversion result.</li>
+<li>Handling ADC scan-complete callbacks.</li>
+<li>Recording ADC completion and error state for the application.</li>
+<li>Compile-time abstraction between the supported DAC and DAC_B
+APIs.</li>
+<li>Compile-time abstraction between the supported ADC and ADC_B
+APIs.</li>
+</ul>
+<h2 id="reusable-sbb-code-versus-demoreference-application">Reusable SBB
+code versus demo/reference application</h2>
+<h3 id="reusable-sbb-code">Reusable SBB code</h3>
+<p><code>dac_ep.c</code> and <code>dac_ep.h</code> are the reusable
+peripheral-facing layer. They contain the DAC/ADC wrapper functions,
+driver-selection macros, conversion sequencing, ADC callback handling,
+and the shared result/status variables.</p>
+<h3 id="demoreference-application-code">Demo/reference application
+code</h3>
+<p><code>dac_example_app.c</code> and <code>dac_example_app.h</code>
+implement the terminal-driven demonstration. The reference application
+is responsible for:</p>
+<ul>
+<li>Initializing the UART console.</li>
+<li>Displaying example and FSP version information.</li>
+<li>Initializing the SBB’s DAC and ADC resources.</li>
+<li>Prompting the user for a DAC value.</li>
+<li>Reading and validating terminal input.</li>
+<li>Calling the DAC/ADC operation.</li>
+<li>Printing the ADC result after conversion completes.</li>
+<li>Printing errors, deinitializing resources, and entering a breakpoint
+on failure.</li>
+</ul>
+<p>Its application entry point is:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> dac_example_app_run<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span></code></pre></div>
+<p>The source identifies this function as the single entry point called
+by <code>hal_entry.c</code>.</p>
+<p>The terminal UI, input parsing, prompts, and continuous foreground
+loop are reference-application behavior rather than reusable DAC/ADC
+driver operations.</p>
+<h2 id="public-functions-to-look-at-first">Public functions to look at
+first</h2>
+<h3 id="dac_open"><code>dac_open()</code></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fsp_err_t dac_open<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span></code></pre></div>
+<p>Opens the generated DAC instance exposed through
+<code>g_dac_ctrl</code> and <code>g_dac_cfg</code>.</p>
+<h3 id="adc_open"><code>adc_open()</code></h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fsp_err_t adc_open<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span></code></pre></div>
+<p>Opens the generated ADC instance exposed through
+<code>g_adc_ctrl</code> and <code>g_adc_cfg</code>.</p>
+<h3 id="adc_scan_cfg"><code>adc_scan_cfg()</code></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fsp_err_t adc_scan_cfg<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span></code></pre></div>
+<p>Configures ADC scanning. With ADC_B it uses
+<code>g_adc_scan_cfg</code>; otherwise it uses
+<code>g_adc_channel_cfg</code>.</p>
+<h3 id="dac_adc_operations"><code>dac_adc_operations()</code></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fsp_err_t dac_adc_operations<span class="op">(</span><span class="dt">int32_t</span> <span class="op">*</span> input<span class="op">);</span></span></code></pre></div>
+<p>This is the main SBB operation to study. It writes the requested DAC
+value, starts the DAC, applies the configured stabilization delay,
+starts the ADC scan, and stops the DAC output for the next conversion
+cycle.</p>
+<h3 id="adc_read"><code>adc_read()</code></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fsp_err_t adc_read<span class="op">(</span>adc_ctrl_t <span class="op">*</span> p_ctrl<span class="op">,</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                   adc_channel_t <span class="dt">const</span> reg_id<span class="op">,</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                   <span class="dt">uint16_t</span> <span class="op">*</span> <span class="dt">const</span> p_data<span class="op">);</span></span></code></pre></div>
+<p>Reads a conversion result from the selected ADC channel.</p>
+<h3 id="adc_callback"><code>adc_callback()</code></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> adc_callback<span class="op">(</span>adc_callback_args_t <span class="op">*</span> p_args<span class="op">);</span></span></code></pre></div>
+<p>Handles ADC events. On <code>ADC_EVENT_SCAN_COMPLETE</code>, it reads
+<code>ADC_CHANNEL</code> into <code>g_adc_data</code> and sets either
+the completion or error flag. When ADC calibration support is compiled
+in, it also handles <code>ADC_EVENT_CALIBRATION_COMPLETE</code>.</p>
+<h3 id="adc_calibrate"><code>adc_calibrate()</code></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fsp_err_t adc_calibrate<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span></code></pre></div>
+<p>This API exists when <code>BOARD_RA2A1_EK</code> or
+<code>BSP_PERIPHERAL_ADC_B_PRESENT</code> is defined. It initiates
+calibration and waits until the callback reports calibration
+completion.</p>
+<h3 id="cleanup-functions">Cleanup functions</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> dac_deinit<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> adc_deinit<span class="op">(</span><span class="dt">void</span><span class="op">);</span></span></code></pre></div>
+<p>These close the DAC and ADC instances when they are open.</p>
+<h2 id="reference-configuration-assumptions">Reference configuration
+assumptions</h2>
+<h3 id="dac-input-range">DAC input range</h3>
+<p>The SBB headers define:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define DAC_MIN_VAL </span><span class="op">(</span><span class="dv">1</span><span class="op">)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define DAC_MAX_VAL </span><span class="op">(</span><span class="dv">4095</span><span class="op">)</span></span></code></pre></div>
+<p>The reference application therefore accepts values from <strong>1
+through 4095</strong>. The original documentation explicitly excludes
+zero because the ADC output will not be zero due to an offset-correction
+value.</p>
+<h3 id="adc-channel">ADC channel</h3>
+<p>For FPB-RA4E2, FPB-RA6E2, and FPB-RA8E1, none of the special board
+selections in <code>dac_ep.h</code> apply. The SBB therefore
+selects:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define ADC_CHANNEL </span><span class="op">(</span><span class="pp">ADC_CHANNEL_0</span><span class="op">)</span></span></code></pre></div>
+<p>This agrees with the ADC channel 0 hardware connections specified for
+all three boards in the supplied README.</p>
+<h3 id="dacadc-implementation-selection">DAC/ADC implementation
+selection</h3>
+<p>The SBB selects the FSP driver API at compile time:</p>
+<ul>
+<li><code>BSP_PERIPHERAL_DAC_B_PRESENT</code> selects the DAC_B API;
+otherwise the DAC API is used.</li>
+<li><code>BSP_PERIPHERAL_ADC_B_PRESENT</code> selects the ADC_B API;
+otherwise the ADC API is used.</li>
+</ul>
+<p>The generated project is therefore expected to provide the control
+and configuration objects used by these wrappers.</p>
+<h3 id="stabilization-delay">Stabilization delay</h3>
+<p>The SBB defines:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define STABILIZATION_DELAY </span><span class="op">(</span><span class="dv">1</span><span class="op">)</span></span></code></pre></div>
+<p>and calls:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>R_BSP_SoftwareDelay<span class="op">(</span>STABILIZATION_DELAY<span class="op">,</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                    BSP_DELAY_UNITS_MILLISECONDS<span class="op">);</span></span></code></pre></div>
+<p>between starting the DAC and starting the ADC scan.</p>
+<h3 id="terminal-input">Terminal input</h3>
+<p>The input buffer is 16 bytes. The original README states that
+terminal input should not exceed 15 bytes and that operation is not
+guaranteed for non-integer input. It also notes that only the integer
+part of floating-point input is processed.</p>
+<h2 id="what-must-change-when-adapting-the-sbb">What must change when
+adapting the SBB?</h2>
+<h3 id="dac-and-adc-pins">DAC and ADC pins</h3>
+<p>The DAC output to ADC input connection is board-specific. If the SBB
+is moved to different pins or another board, update the generated
+pin/peripheral configuration and connect the selected DAC output to the
+intended ADC input.</p>
+<p>For the documented reference boards, retain the connections listed in
+the Hardware setup section.</p>
+<h3 id="adc-channel-1">ADC channel</h3>
+<p>The reusable source reads the channel selected by
+<code>ADC_CHANNEL</code>. The three documented boards use
+<code>ADC_CHANNEL_0</code>. If a different ADC input is selected in
+another design, <code>ADC_CHANNEL</code> and the generated ADC scan
+configuration must agree with that selection.</p>
+<h3 id="dac-and-adc-peripheral-instances">DAC and ADC peripheral
+instances</h3>
+<p>The implementation expects generated objects named:</p>
+<ul>
+<li><code>g_dac_ctrl</code></li>
+<li><code>g_dac_cfg</code></li>
+<li><code>g_adc_ctrl</code></li>
+<li><code>g_adc_cfg</code></li>
+<li><code>g_adc_scan_cfg</code> when ADC_B is selected, or
+<code>g_adc_channel_cfg</code> for the other ADC path</li>
+</ul>
+<p>These must correspond to the target project’s generated FSP
+configuration.</p>
+<h3 id="adc-calibration">ADC calibration</h3>
+<p>Calibration is conditional. The application calls
+<code>adc_calibrate()</code> when
+<code>BSP_PERIPHERAL_ADC_B_PRESENT</code> is true for the target. That
+path waits for <code>ADC_EVENT_CALIBRATION_COMPLETE</code>. If ADC_B is
+used, preserve the required generated callback configuration so
+calibration completion can be detected.</p>
+<h3 id="timing">Timing</h3>
+<p>The SBB currently uses a 1 ms software stabilization delay between
+starting the DAC and starting the ADC scan. If the target device,
+electrical load, or required settling behavior differs, validate the
+appropriate conversion/settling timing for that target rather than
+assuming the reference value is universally applicable.</p>
+<h3 id="clocks">Clocks</h3>
+<p>The supplied source and README do not state the DAC or ADC peripheral
+clock configuration for FPB-RA4E2, FPB-RA6E2, or FPB-RA8E1. If
+application clock settings are changed, the resulting DAC and ADC
+configuration must be validated against the target MCU
+configuration.</p>
+<h3 id="memory-and-task-priorities">Memory and task priorities</h3>
+<p>The supplied files do not specify memory-footprint requirements, an
+RTOS, stack or heap sizing, or task priorities. The reference
+application runs as a continuous foreground loop and reacts to shared
+flags set by the ADC callback. Any RTOS scheduling or memory
+requirements need to be established by the integrating application.</p>
+<h3 id="console-middleware">Console middleware</h3>
+<p>The demo uses <code>console/uart_console.h</code> and standard I/O.
+This terminal interface is reference-application behavior. An
+application that reuses only the DAC/ADC SBB core does not need to
+preserve the interactive console unless required by its own design.</p>
+<h2 id="dependencies">Dependencies</h2>
+<h3 id="fsp-dac-driver">FSP DAC driver</h3>
+<p>Depending on device capabilities, the SBB maps its DAC operations to
+either the DAC or DAC_B FSP implementation. The operations used are:</p>
+<ul>
+<li>Open</li>
+<li>Write</li>
+<li>Start</li>
+<li>Stop</li>
+<li>Close</li>
+</ul>
+<h3 id="fsp-adc-driver">FSP ADC driver</h3>
+<p>Depending on device capabilities, the SBB maps its ADC operations to
+either ADC or ADC_B. Its operations include:</p>
+<ul>
+<li>Open</li>
+<li>Scan configuration</li>
+<li>Calibration when compiled for the target</li>
+<li>Scan start or scan-group start</li>
+<li>Read</li>
+<li>Close</li>
+</ul>
+<h3 id="fspbsp-services">FSP/BSP services</h3>
+<p>The supplied code also depends on:</p>
+<ul>
+<li><code>hal_data.h</code> for generated configuration and FSP
+types.</li>
+<li><code>R_BSP_SoftwareDelay()</code> for DAC output
+stabilization.</li>
+<li><code>R_FSP_VersionGet()</code> in the reference application.</li>
+<li>ADC callback events for scan completion and, where applicable,
+calibration completion.</li>
+</ul>
+<h3 id="console-and-c-runtime">Console and C runtime</h3>
+<p>The reference application depends on:</p>
+<ul>
+<li><code>console/uart_console.h</code></li>
+<li><code>uart_console_init()</code></li>
+<li><code>uart_console_has_char()</code></li>
+<li><code>uart_console_flush()</code></li>
+<li><code>printf()</code></li>
+<li><code>fgets()</code></li>
+<li><code>atoi()</code></li>
+<li><code>strcspn()</code></li>
+</ul>
+<h3 id="hardware-resources">Hardware resources</h3>
+<p>The reference implementation requires:</p>
+<ul>
+<li>A DAC peripheral/output.</li>
+<li>An ADC peripheral/input.</li>
+<li>A jumper connecting the DAC output to ADC channel 0.</li>
+<li>A USB/debug connection.</li>
+<li>A serial console for the supplied demonstration.</li>
+</ul>
+<h2 id="serial-terminal-configuration">Serial terminal
+configuration</h2>
+<p>The original README specifies:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Port</td>
+<td>Port provided by J-Link On-Board</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>115200</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>8 bit</td>
+</tr>
+<tr>
+<td>Parity</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Stop bits</td>
+<td>1 bit</td>
+</tr>
+<tr>
+<td>Flow control</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>For Tera Term, it additionally specifies:</p>
+<ul>
+<li>Receive newline: <strong>CR</strong></li>
+<li>Transmit newline: <strong>CR</strong></li>
+<li><strong>Local echo</strong> enabled</li>
+</ul>
+<h2 id="demonstrated-behavior-and-performance">Demonstrated behavior and
+performance</h2>
+<h3 id="demonstrated-behavior">Demonstrated behavior</h3>
+<p>The supplied SBB/reference application demonstrates that:</p>
+<ul>
+<li>A user-selected value from 1 to 4095 can be written to the DAC.</li>
+<li>The DAC conversion can be started and stopped through the selected
+FSP DAC implementation.</li>
+<li>An ADC scan can be configured and initiated.</li>
+<li>The DAC output can be physically routed back to ADC channel 0 on
+FPB-RA4E2, FPB-RA6E2, and FPB-RA8E1.</li>
+<li>An ADC result can be read after the ADC scan-complete event and
+printed to the terminal.</li>
+<li>ADC_B calibration is performed when that implementation is selected
+by the target’s BSP feature configuration.</li>
+</ul>
+<p>The supplied README states that ADC output is in a
+<strong>12-bit/16-bit range</strong>, but it does not specify a single
+resolution for all three boards covered by this document.</p>
+<h3 id="performance-measurements">Performance measurements</h3>
+<p>The supplied files do <strong>not</strong> provide measured DAC
+accuracy, ADC accuracy, conversion throughput, settling measurements,
+CPU utilization, memory footprint, interrupt latency, or other benchmark
+data.</p>
+<p>The source contains a 1 ms stabilization delay, but this is an
+implementation delay rather than a reported measurement of conversion
+performance.</p>
+<p>Accordingly, this SBB should be treated as a functional DAC-to-ADC
+integration reference rather than a performance benchmark.</p>
+<h2 id="file-ownership-and-modification-guidance">File ownership and
+modification guidance</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>File</th>
+<th>Classification</th>
+<th>Guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dac_ep.c</code></td>
+<td>Reusable SBB implementation</td>
+<td>Modify when intentionally changing reusable DAC/ADC operations,
+sequencing, callbacks, or driver integration.</td>
+</tr>
+<tr>
+<td><code>dac_ep.h</code></td>
+<td>Reusable SBB interface/configuration abstraction</td>
+<td>Modify carefully when changing public functions, SBB constants,
+channel selection, or ADC/DAC driver mappings.</td>
+</tr>
+<tr>
+<td><code>dac_example_app.c</code></td>
+<td>Demo/reference application</td>
+<td>Appropriate location for changing terminal interaction, input
+validation, printed results, or demonstration sequencing.</td>
+</tr>
+<tr>
+<td><code>dac_example_app.h</code></td>
+<td>Demo/reference application interface</td>
+<td>Contains the demo entry point, version, banner, and informational
+text.</td>
+</tr>
+<tr>
+<td><code>readme.txt</code></td>
+<td>Existing example documentation</td>
+<td>Source of the board connections, input restrictions, and
+serial-terminal requirements used in this guide.</td>
+</tr>
+</tbody>
+</table>
+<p>The SBB includes <code>hal_data.h</code> and references generated FSP
+objects. The supplied file set does not enumerate those generated
+configuration files, so this document does not assign modification
+guidance to individual generated files that were not provided.</p>
+<h2 id="adopting-a-newer-sbb-release-after-local-modifications">Adopting
+a newer SBB release after local modifications</h2>
+<p>If <code>dac_ep.c</code> or <code>dac_ep.h</code> are modified
+locally, those changes create differences in the reusable SBB layer that
+may overlap changes in a future SBB release.</p>
+<p>To keep future upgrades manageable:</p>
+<ul>
+<li>Keep application-specific input handling, messages, and presentation
+in <code>dac_example_app.*</code> rather than moving them into the
+reusable SBB layer.</li>
+<li>Keep board/product-specific changes out of <code>dac_ep.*</code>
+when they can instead be represented by the generated peripheral and pin
+configuration.</li>
+<li>Keep necessary reusable-source changes focused and track why each
+change was made.</li>
+<li>Keep generated FSP configuration separate from hand-maintained SBB
+source.</li>
+<li>When adopting a newer SBB version, compare the new
+<code>dac_ep.c</code> and <code>dac_ep.h</code> with the locally
+modified versions and reconcile the differences.</li>
+<li>Revalidate DAC range handling, DAC/ADC implementation selection,
+channel selection, pin routing, stabilization timing, ADC callback
+operation, and ADC result handling after the update.</li>
+</ul>
+<p>The supplied files do not define an automated migration or
+compatibility mechanism for future SBB releases. Compatibility after
+adopting a later release therefore needs to be validated by the
+integrating project.</p>
+<h2 id="recommended-reading-order">Recommended reading order</h2>
+<ol type="1">
+<li><strong><code>dac_ep.h</code></strong> to understand the public
+functions, DAC range, ADC-channel selection, and DAC/ADC driver
+abstraction.</li>
+<li><strong><code>dac_ep.c</code></strong> to understand peripheral
+initialization, DAC-to-ADC sequencing, calibration, scan completion, and
+cleanup.</li>
+<li><strong><code>dac_example_app.c</code></strong> to see how the SBB
+is exercised through the terminal-driven reference application.</li>
+<li><strong><code>dac_example_app.h</code></strong> to see the
+application’s public entry point and example information.</li>
+<li><strong><code>readme.txt</code></strong> for the original board
+wiring and serial-terminal setup information.</li>
+</ol>
+</body>
+</html>
